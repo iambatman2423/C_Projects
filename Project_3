@@ -1,0 +1,79 @@
+#include <stdio.h>
+
+int main() {
+    int choice;
+    int num, count, first, last, sum,temp;
+    char ch;
+
+    do {
+        printf("1. Alphabet Skipper (a to z skipping 3)\n");
+        printf("2. Digit Counter\n");
+        printf("3. Sum of First and Last Digit\n");
+        printf("4. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                // Q.1 Alphabet Skipper using do-while loop
+                printf("\nAlphabet Skipper:\n");
+                ch = 'a';
+                printf("Output: ");
+                do {
+                    printf("%c", ch);
+                    ch += 4;              
+                    if (ch <= 'z') {
+                        printf(", ");
+                    }
+                } while (ch <= 'z');
+                printf("\n");
+                break;
+
+            case 2:
+                // Q.2 Digit Counter using for loop
+                printf("\nDigit Counter:\n");
+                printf("Enter any number: ");
+                scanf("%d", &num);
+                temp = (num < 0) ? -num : num;
+                 if (temp == 0) {
+                     count = 1;
+                } 
+                else {
+                        for (count = 0; temp > 0; count++) {
+                            temp /= 10; 
+                        }
+                }
+
+                printf("Total number of digits: %d\n", count);
+                break;
+
+            case 3:
+                // Q.3 Sum of First and Last Digit using while loop
+                printf("Sum of First and Last Digit:\n");
+                printf("Enter any number: ");
+                scanf("%d", &num);
+                
+                 int n = (num < 0) ? -num : num;
+                 last = n % 10;
+                 first = n;
+                 
+                 while (first >= 10) {
+                    first /= 10;  
+                 }
+                 
+                 sum = first + last;
+
+                printf("The sum of the first and the last digit: %d\n", sum);
+                break;
+
+            case 4:
+                printf("Exiting program. Goodbye!\n");
+                break;
+
+            default:
+                printf("Invalid choice!");
+        }
+    } while (choice != 4);
+
+    return 0;
+}
